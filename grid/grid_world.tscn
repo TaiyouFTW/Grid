@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://ckgewmmhkq5r6"]
+
+[ext_resource type="Texture2D" uid="uid://bg4krrp2pkkl5" path="res://assets/Coastlines.png" id="1_h03cm"]
+[ext_resource type="PackedScene" uid="uid://darftxwpljl0r" path="res://grid/hero_swordsman.tscn" id="1_s5daf"]
+[ext_resource type="Texture2D" uid="uid://b487xy3x0hygx" path="res://assets/Tree_small_1.png" id="2_261ma"]
+[ext_resource type="Script" path="res://grid/grid.gd" id="3_gap42"]
+[ext_resource type="Script" path="res://grid/Path.gd" id="4_x1fkq"]
+[ext_resource type="PackedScene" uid="uid://cghp6lo10j6go" path="res://grid/cursor.tscn" id="7_gunp0"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jja0u"]
+texture = ExtResource("1_h03cm")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+1:1/0/custom_data_0 = true
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1cws2"]
+texture = ExtResource("2_261ma")
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 8)
+0:0/0/z_index = 1
+0:0/0/custom_data_1 = true
+
+[sub_resource type="TileSet" id="TileSet_2ut6h"]
+custom_data_layer_0/name = "walkable"
+custom_data_layer_0/type = 1
+custom_data_layer_1/name = "trees"
+custom_data_layer_1/type = 1
+sources/0 = SubResource("TileSetAtlasSource_jja0u")
+sources/2 = SubResource("TileSetAtlasSource_1cws2")
+
+[node name="world" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+y_sort_enabled = true
+tile_set = SubResource("TileSet_2ut6h")
+format = 2
+layer_0/name = "walkable"
+layer_0/tile_data = PackedInt32Array(-262149, 65536, 1, -196613, 65536, 1, -131077, 65536, 1, -65541, 65536, 1, -5, 65536, 1, 65531, 65536, 1, 131067, 65536, 1, 196603, 65536, 1, 262139, 65536, 1, 327675, 65536, 1, -262148, 65536, 1, -196612, 65536, 1, -131076, 65536, 1, -65540, 65536, 1, -4, 65536, 1, 65532, 65536, 1, 131068, 65536, 1, 196604, 65536, 1, 262140, 65536, 1, 327676, 65536, 1, -262147, 65536, 1, -196611, 65536, 1, -131075, 65536, 1, -65539, 65536, 1, -3, 65536, 1, 65533, 65536, 1, 131069, 65536, 1, 196605, 65536, 1, 262141, 65536, 1, 327677, 65536, 1, -262146, 65536, 1, -196610, 65536, 1, -131074, 65536, 1, -65538, 65536, 1, -2, 65536, 1, 65534, 65536, 1, 131070, 65536, 1, 196606, 65536, 1, 262142, 65536, 1, 327678, 65536, 1, -262145, 65536, 1, -196609, 65536, 1, -131073, 65536, 1, -65537, 65536, 1, -1, 65536, 1, 65535, 65536, 1, 131071, 65536, 1, 196607, 65536, 1, 262143, 65536, 1, 327679, 65536, 1, -327680, 65536, 1, -262144, 65536, 1, -196608, 65536, 1, -131072, 65536, 1, -65536, 65536, 1, 0, 65536, 1, 65536, 65536, 1, 131072, 65536, 1, 196608, 65536, 1, 262144, 65536, 1, -327679, 65536, 1, -262143, 65536, 1, -196607, 65536, 1, -131071, 65536, 1, -65535, 65536, 1, 1, 65536, 1, 65537, 65536, 1, 131073, 65536, 1, 196609, 65536, 1, 262145, 65536, 1, -327678, 65536, 1, -262142, 65536, 1, -196606, 65536, 1, -131070, 65536, 1, -65534, 65536, 1, 2, 65536, 1, 65538, 65536, 1, 131074, 65536, 1, 196610, 65536, 1, 262146, 65536, 1, -327677, 65536, 1, -262141, 65536, 1, -196605, 65536, 1, -131069, 65536, 1, -65533, 65536, 1, 3, 65536, 1, 65539, 65536, 1, 131075, 65536, 1, 196611, 65536, 1, 262147, 65536, 1, -327676, 65536, 1, -262140, 65536, 1, -196604, 65536, 1, -131068, 65536, 1, -65532, 65536, 1, 4, 65536, 1, 65540, 65536, 1, 131076, 65536, 1, 196612, 65536, 1, 262148, 65536, 1, -327675, 65536, 1, -262139, 65536, 1, -196603, 65536, 1, -131067, 65536, 1, -65531, 65536, 1, 5, 65536, 1, 65541, 65536, 1, 131077, 65536, 1, 196613, 65536, 1, 262149, 65536, 1)
+layer_1/name = "trees"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = true
+layer_1/y_sort_origin = 0
+layer_1/z_index = 1
+layer_1/tile_data = PackedInt32Array(-131072, 2, 0, -131071, 2, 0, -65537, 2, 0, -196606, 2, 0)
+
+[node name="Grid" type="Node2D" parent="TileMap"]
+script = ExtResource("3_gap42")
+
+[node name="Swordsman" parent="." instance=ExtResource("1_s5daf")]
+position = Vector2(8, 8)
+
+[node name="Camera2D" type="Camera2D" parent="Swordsman"]
+limit_left = -512
+limit_top = -512
+limit_right = 512
+limit_bottom = 512
+
+[node name="Path" type="Node2D" parent="."]
+script = ExtResource("4_x1fkq")
+
+[node name="Cursor" parent="." instance=ExtResource("7_gunp0")]

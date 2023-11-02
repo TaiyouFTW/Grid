@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1r0j4oh3g0g7"]
+
+[ext_resource type="Texture2D" uid="uid://cgj5nayxpqgqg" path="res://assets/white_tile.png" id="1_7gesy"]
+[ext_resource type="Script" path="res://grid2/grid_overlay.gd" id="1_l0f3h"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8w5kp"]
+texture = ExtResource("1_7gesy")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_gufh8"]
+sources/0 = SubResource("TileSetAtlasSource_8w5kp")
+
+[node name="TileMap" type="TileMap"]
+tile_set = SubResource("TileSet_gufh8")
+format = 2
+script = ExtResource("1_l0f3h")

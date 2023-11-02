@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://dfhrpvic17v02"]
+
+[ext_resource type="Texture2D" uid="uid://bg4krrp2pkkl5" path="res://assets/Coastlines.png" id="1_oaly6"]
+[ext_resource type="Texture2D" uid="uid://b487xy3x0hygx" path="res://assets/Tree_small_1.png" id="2_enhlo"]
+[ext_resource type="PackedScene" uid="uid://darftxwpljl0r" path="res://grid/hero_swordsman.tscn" id="2_qk8u7"]
+[ext_resource type="PackedScene" uid="uid://cghp6lo10j6go" path="res://grid/cursor.tscn" id="3_3b840"]
+[ext_resource type="Script" path="res://grid/grid.gd" id="4_fqfax"]
+[ext_resource type="Script" path="res://grid/Path.gd" id="5_5v4jy"]
+[ext_resource type="Script" path="res://grid2/grid_character_controller.gd" id="5_utea6"]
+[ext_resource type="Script" path="res://grid2/grid_movement2.gd" id="7_mhbp8"]
+[ext_resource type="PackedScene" uid="uid://c1r0j4oh3g0g7" path="res://grid2/UnitOverlay.tscn" id="8_w6b6p"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jja0u"]
+texture = ExtResource("1_oaly6")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+1:1/0/custom_data_0 = true
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1cws2"]
+texture = ExtResource("2_enhlo")
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 8)
+0:0/0/z_index = 1
+0:0/0/custom_data_1 = true
+
+[sub_resource type="TileSet" id="TileSet_2ut6h"]
+custom_data_layer_0/name = "walkable"
+custom_data_layer_0/type = 1
+custom_data_layer_1/name = "trees"
+custom_data_layer_1/type = 1
+sources/0 = SubResource("TileSetAtlasSource_jja0u")
+sources/2 = SubResource("TileSetAtlasSource_1cws2")
+
+[node name="World" type="Node2D"]
+
+[node name="UnitOverlay" parent="." instance=ExtResource("8_w6b6p")]
+modulate = Color(1, 0, 0, 0.5)
+z_index = 5
+
+[node name="TileMap" type="TileMap" parent="."]
+y_sort_enabled = true
+tile_set = SubResource("TileSet_2ut6h")
+format = 2
+layer_0/name = "walkable"
+layer_0/tile_data = PackedInt32Array(-196612, 0, 0, -131076, 0, 1, -65540, 0, 1, -4, 0, 1, 65532, 0, 1, 131068, 0, 1, 196604, 0, 1, 262140, 0, 2, -196611, 65536, 0, -131075, 65536, 1, -65539, 65536, 1, -3, 65536, 1, 65533, 65536, 1, 131069, 65536, 1, 196605, 65536, 1, 262141, 65536, 2, -196610, 65536, 0, -131074, 65536, 1, -65538, 65536, 1, -2, 65536, 1, 65534, 65536, 1, 131070, 65536, 1, 196606, 65536, 1, 262142, 65536, 2, -196609, 65536, 0, -131073, 65536, 1, -65537, 65536, 1, -1, 65536, 1, 65535, 65536, 1, 131071, 65536, 1, 196607, 65536, 1, 262143, 65536, 2, -262144, 65536, 0, -196608, 65536, 1, -131072, 65536, 1, -65536, 65536, 1, 0, 65536, 1, 65536, 65536, 1, 131072, 65536, 1, 196608, 65536, 2, -262143, 65536, 0, -196607, 65536, 1, -131071, 65536, 1, -65535, 65536, 1, 1, 65536, 1, 65537, 65536, 1, 131073, 65536, 1, 196609, 262144, 0, -262142, 65536, 0, -196606, 65536, 1, -131070, 65536, 1, -65534, 65536, 1, 2, 65536, 1, 65538, 65536, 1, 131074, 65536, 1, 196610, 65536, 1, -262141, 131072, 0, -196605, 131072, 1, -131069, 131072, 1, -65533, 131072, 1, 3, 131072, 1, 65539, 131072, 1, 131075, 131072, 1, 196611, 131072, 1, 262145, 0, 2, 262146, 65536, 2, 262147, 131072, 2, -262140, 196608, 2, -196604, 196608, 2, -131068, 196608, 2, -65532, 196608, 2, 4, 196608, 2, 65540, 196608, 2, 131076, 196608, 2, 196612, 196608, 2, 262148, 196608, 2, 327684, 196608, 2, 327683, 196608, 2, 327682, 196608, 2, 327681, 196608, 2, 327680, 196608, 2, 262144, 196608, 2, 327679, 196608, 2, 327678, 196608, 2, 327677, 196608, 2, 327676, 196608, 2, 327675, 196608, 2, 262139, 196608, 2, 196603, 196608, 2, 131067, 196608, 2, 65531, 196608, 2, -5, 196608, 2, -65541, 196608, 2, -131077, 196608, 2, -131078, 196608, 2, -196614, 196608, 2, -196613, 196608, 2, -262149, 196608, 2, -262148, 196608, 2, -262147, 196608, 2, -262146, 196608, 2, -262145, 196608, 2, -327680, 196608, 2, -327679, 196608, 2, -327678, 196608, 2, -327677, 196608, 2, -327676, 196608, 2, -327675, 196608, 2, -327674, 196608, 2, -262138, 196608, 2, -196602, 196608, 2, -131066, 196608, 2, -65530, 196608, 2, 6, 196608, 2, 65542, 196608, 2, 131078, 196608, 2, 196614, 196608, 2, 262150, 196608, 2, 327686, 196608, 2, 393222, 196608, 2, 393221, 196608, 2, 393220, 196608, 2, 393219, 196608, 2, 393218, 196608, 2, 393217, 196608, 2, 393216, 196608, 2, 458751, 196608, 2, 458750, 196608, 2, 458749, 196608, 2, 458748, 196608, 2, 458747, 196608, 2, 458746, 196608, 2, 458745, 196608, 2, 393209, 196608, 2, 327673, 196608, 2, 262137, 196608, 2, 196601, 196608, 2, 131065, 196608, 2, 65529, 196608, 2, -7, 196608, 2, -65543, 196608, 2, -131079, 196608, 2, -196615, 196608, 2, -262151, 196608, 2, -262150, 196608, 2, -65542, 196608, 2, -6, 196608, 2, 65530, 196608, 2, 131066, 196608, 2, 196602, 196608, 2, 262138, 196608, 2, 327674, 196608, 2, 393210, 196608, 2, 393211, 196608, 2, 393212, 196608, 2, 393213, 196608, 2, 393214, 196608, 2, 393215, 196608, 2, 327685, 196608, 2, 262149, 196608, 2, 196613, 196608, 2, 131077, 196608, 2, 65541, 196608, 2, 5, 196608, 2, -65531, 196608, 2, -131067, 196608, 2, -196603, 196608, 2, -262139, 196608, 2, -393210, 196608, 2, -393211, 196608, 2, -393212, 196608, 2, -393213, 196608, 2, -393214, 196608, 2, -393215, 196608, 2, -393216, 196608, 2, -327681, 196608, 2, -327682, 196608, 2, -327683, 196608, 2, -327684, 196608, 2, -327685, 196608, 2, -327686, 196608, 2, -327687, 196608, 2, -393223, 196608, 2, -393222, 196608, 2, -393221, 196608, 2, -393220, 196608, 2, -393219, 196608, 2, -393218, 196608, 2, -393217, 196608, 2, -458752, 196608, 2, -458751, 196608, 2, -458750, 196608, 2, -458749, 196608, 2, -458748, 196608, 2, -458747, 196608, 2, -458746, 196608, 2)
+layer_1/name = "trees"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = true
+layer_1/y_sort_origin = 0
+layer_1/z_index = 1
+layer_1/tile_data = PackedInt32Array(-131075, 2, 0, -65534, 2, 0, 196605, 2, 0)
+
+[node name="Grid" type="Node2D" parent="TileMap"]
+modulate = Color(1, 1, 1, 0.0588235)
+script = ExtResource("4_fqfax")
+
+[node name="Cursor" parent="." instance=ExtResource("3_3b840")]
+position = Vector2(8, 8)
+
+[node name="Character" type="Node2D" parent="."]
+script = ExtResource("5_utea6")
+
+[node name="Swordsman" parent="Character" instance=ExtResource("2_qk8u7")]
+position = Vector2(8, 8)
+script = ExtResource("7_mhbp8")
+range = 3
+
+[node name="Camera2D" type="Camera2D" parent="Character/Swordsman"]
+
+[node name="Path" type="Node2D" parent="Character"]
+script = ExtResource("5_5v4jy")
